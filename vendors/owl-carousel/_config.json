@@ -11,7 +11,6 @@
 		"dist":		"dist",
 
 		"scripts": [
-			"src/js/owl.carousel.js",
 			"src/js/owl.autorefresh.js",
 			"src/js/owl.lazyload.js",
 			"src/js/owl.autoheight.js",
@@ -24,7 +23,4 @@
 		]
 	},
 
-	"title": "Owl Carousel",
-	"download": "https://github.com/OwlCarousel2/OwlCarousel2/archive/master.zip",
-	"donate": "https://www.paypal.com"
 }
