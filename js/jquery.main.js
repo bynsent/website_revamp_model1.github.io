@@ -54,7 +54,7 @@ $(document).ready(function() {
         });
     });
 
-    // owl carousel slide set up
+/*    // owl carousel slide set up
     $(".group-slide").owlCarousel({
         loop: true,
         margin: 30,
@@ -158,7 +158,7 @@ $(document).ready(function() {
             }
         }
     });
-
+*/
     // Counter Sectiion
     var $counter = $('.number');
     if ($counter.length) {
