@@ -4185,14 +4185,14 @@ em.state-invalid {
 }
 
 .btn.btn-black {
-	background: #000;
-	border: .1429rem solid #000;
+	background: #14acd4;
+	border: .1429rem solid #14acd4;
 	color: #fff;
 }
 
 .btn.btn-black:hover {
 	background: none;
-	color: #000;
+	color: #14acd4;
 }
 
 .btn:focus {
@@ -5519,6 +5519,30 @@ pre {
 
 .about-banner {
 	background-image: url('../img/about_header.png');
+}
+
+.iot-services {
+background-image: url('../img/iot\ services\ banner.png');
+}
+
+.iot-projects {
+	background-image: url('../img/iot\ projects\ banner.png');
+}
+
+.bpo-services {
+		background-image: url('../img/bpo\ services\ banner.png');
+}
+
+.supportdesk-services {
+	background-image: url('../img/supportdesk\ services\ banner.png');
+}
+
+.managedservices-services {
+	background-image: url('../img/managedservices\ services\ banner.png');
+}
+
+.blog-landing {
+	background-image: url('../img/blog\ landing\ banner.png');
 }
 
 .portfolio-banner {
