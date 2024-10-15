@@ -5533,8 +5533,16 @@ background-image: url('../img/iot\ services\ banner.png');
 		background-image: url('../img/bpo\ services\ banner.png');
 }
 
+.bpo-projects {
+	background-image: url('../img/bpo\ projects\ banner.png');
+}
+
 .supportdesk-services {
 	background-image: url('../img/supportdesk\ services\ banner.png');
+}
+
+.managedservices-projects {
+	background-image: url('../img/managedservices\ projects\ banner.png');
 }
 
 .managedservices-services {
