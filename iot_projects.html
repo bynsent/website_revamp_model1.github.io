@@ -67,19 +67,6 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown" data-animation="fadeIn">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="bpo.html" data-title="BPO"> Business Process Outsourcing </a>
-                                        <ul class="dropdown-menu  no-border-radius">
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a href="bpo.html">Business Process Outsourcing</a>
-                                            </li>
-
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a href="bpo_projects.html">Our Projects</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="dropdown" data-animation="fadeIn">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="managedservices.html" data-title="Managed Services"> Managed Services </a>
                                         <ul class="dropdown-menu  no-border-radius">
 
@@ -96,7 +83,18 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    
+                                    <li class="dropdown" data-animation="fadeIn">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="bpo.html" data-title="BPO"> Business Process Outsourcing </a>
+                                        <ul class="dropdown-menu  no-border-radius">
+                                            <li class="dropdown dropdown-right dropdown-parent">
+                                                <a href="bpo.html">Business Process Outsourcing</a>
+                                            </li>
+
+                                            <li class="dropdown dropdown-right dropdown-parent">
+                                                <a href="bpo_projects.html">Our Projects</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                     <li>
                                         <a href="about.html"> About </a>
                                     </li>
@@ -177,7 +175,7 @@
                                             </li>
                                         </ul>
                                         <div class="text-block top-space">
-                                            <h2 class="text-block-title">Client Profile:</h2>
+                                            <h2 class="text-block-title">Project Profile:</h2>
                                             <p>The client focuses on electrical safety solutions, particularly for identifying and preventing the use of unsafe electrical equipment. The product aims to lock the plug of potentially hazardous electrical devices to prevent accidental use, contributing to overall safety in environments like homes, workplaces, and industrial sites.</p>
                                          </div>
                                     </div>
@@ -189,6 +187,58 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="portfolio-des">
+                                <div class="row">
+                                    <div class="col-lg-6 bottom-space-medium-only">
+                                        <ul class="content-list info-list">
+                                            <li class="row">
+                                                <div class="col">
+                                                    <span class="custom-icon-folder"><span class="sr-only">&nbsp;</span></span>
+                                                    <span class="text title">Project:</span>
+                                                </div>
+                                                <div class="col">
+                                                    <p>Custom Wearables Development</p>
+                                                </div>
+                                            </li><!--
+                                            <li class="row">
+                                                <div class="col">
+                                                    <span class="custom-icon-calendar"><span class="sr-only">&nbsp;</span></span>
+                                                    <span class="text title">Started on:</span>
+                                                </div>
+                                                <div class="col">
+                                                    <p>July 2024</p>
+                                                </div>-->
+                                            </li>
+                                            <li class="row">
+                                                <div class="col">
+                                                    <span class="custom-icon-skill"><span class="sr-only">&nbsp;</span></span>
+                                                    <span class="text title">Services Used:</span>
+                                                </div>
+                                                <div class="col">
+                                                    <p>IoT Design and Architectures, Software Development</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="text-block top-space">
+                                            <h2 class="text-block-title">Project Profile:</h2>
+                                            <p>SCSI introduced WatchArmor and Watch Guardian to transform workplace and personal safety through innovative wearable technology. WatchArmor serves as a reliable alarm trigger device, offering discreet emergency alerts with a robust web management portal for monitoring and incident tracking. For users seeking a more comprehensive safety solution, the Watch Guardian platform takes security to the next level. Utilizing advanced Samsung Watch technology, Watch Guardian goes beyond basic alarms, providing real-time team communication, live tracking, and seamless integration with on-site security systems for a fully coordinated safety response. Together, these platforms address a wide range of safety needs, from personal protection to complex workplace security.</p>
+                                         </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="text-block">
+                                            <p>Connectified integrated an IoT-enabled platform for real-time tracking, monitoring, and management of electrical equipment status and safety tags.</p>
+                                            <p>Created tailored solutions that streamline equipment safety checks and automate reminders for re-testing or maintenance. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </section>
                 </div>
@@ -200,7 +250,7 @@
             <div class="content-block footer-main text-center">
                 <div class="container">
                     <div class="waituk_newsletter-form">
-                        <form  action="#" id="signup" method="post">
+                        <form  action="https://formspree.io/f/mvgobqgk" id="signup" method="post">
                             <fieldset class="clearfix">
                                 <div class="form-group input-holder">
                                     <input type="email" name="subscriber_email" id="subscriber_email" class="form-control" placeholder="Email Address">
@@ -209,6 +259,30 @@
                             </fieldset>
                             <p id="subscribe_message" class="text-left"></p>
                         </form>
+                        <script>
+                            document.getElementById("signup").addEventListener("submit", function (event) {
+                                event.preventDefault();
+                                const form = event.target;
+                                fetch(form.action, {
+                                    method: form.method,
+                                    body: new FormData(form),
+                                    headers: {
+                                        Accept: "application/json",
+                                    },
+                                })
+                                    .then(response => {
+                                        if (response.ok) {
+                                            document.getElementById("subscribe_message").innerText = "Thank you for subscribing!";
+                                            form.reset();
+                                        } else {
+                                            document.getElementById("subscribe_message").innerText = "Oops! There was a problem.";
+                                        }
+                                    })
+                                    .catch(() => {
+                                        document.getElementById("subscribe_message").innerText = "Oops! There was a problem.";
+                                    });
+                            });
+                        </script>
                     </div>
                     <div class="content-block footer-info">
                         <div class="row">
@@ -216,36 +290,31 @@
                                 <div class="holder">
                                     <span class="icon custom-icon-phone"></span>
                                     <p> Call Us At</p>
-                                    <p><a class="footer-link" href="tel:+6345 499 6913">+6345 499 6913</a></p>
-                                    <p><a class="footer-link" href="tel:+6345 499 6913">+1300 555 570</a></p>
+                                    <p><a class="footer-link" href="tel:+6345 499 6913">PH: +6345 499 6913</a></p>
+                                    <p><a class="footer-link" href="tel:+6345 499 6913">AU: +1300 555 570</a></p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="holder">
                                     <span class="icon custom-icon-email"></span>
                                     <p> Email Us At</p>
-                                    <p><a href="mailto:waituk.net">admin@connectified.com.ph</a></p>
+                                    <p><a href="mailto:admin@connectified.com.ph">admin@connectified.com.ph</a></p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="holder">
                                     <span class="icon custom-icon-pin"></span>
                                     <p> Visit Us</p>
-                                     <p>Pavilion 10, Berthaphil, Clark, Angeles, 2009 Pampanga</p>
-                                     <p>27A Sir Laurence Dr, Seaford, Victoria, 3198 Australia</p>
+                                     <p>PH: Pavilion 10, Berthaphil, Clark, Angeles, 2009 Pampanga</p>
+                                     <p>AU: 27A Sir Laurence Dr, Seaford, Victoria, 3198 Australia</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- social networks 
+                    <!-- social networks -->
                     <ul class="social-network">
-                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li><a href="#"><span class="icon-google-plus"></span></a></li>
-                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                        <li><a href="https://ph.linkedin.com/company/connectified-bringing-iot-to-life-inc"><span class="icon-linkedin"></span></a></li>
                     </ul>
-                    -->
                 </div>
             </div>
             <div class="footer-bottom text-center">
