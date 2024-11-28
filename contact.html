@@ -133,40 +133,72 @@
                                 <h6 class="content-title contact-title">GET IN TOUCH WITH US</h6>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <!-- contact form -->
-                                        <form action="#" method="post" id="contact_form" class="waituk_contact-form">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="FIRST NAME *" id="con_fname" name="con_fname" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="LAST NAME *" id="con_lname" name="con_lname" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="tel" placeholder="PHONE NUMBER" id="con_phone" name="con_phone" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="email" placeholder="EMAIL ADDRESS *" id="con_email" name="con_email" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" placeholder="MESSAGE *" id="con_message" name="con_message"></textarea>
-                                            </div>
-                                            <div class="btn-container">
-                                                <button id="btn_sent" class="btn btn-primary btn-arrow">SEND MESSAGE</button>
-                                                <p id="error_message"> </p>
-                                            </div>
-                                        </form>
+<!-- Contact Form -->
+<form action="https://formspree.io/f/mvgobqgk" method="post" id="contact_form" class="waituk_contact-form">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="FIRST NAME *" id="con_fname" name="con_fname" class="form-control" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="LAST NAME *" id="con_lname" name="con_lname" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="tel" placeholder="PHONE NUMBER" id="con_phone" name="con_phone" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="email" placeholder="EMAIL ADDRESS *" id="con_email" name="con_email" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" placeholder="MESSAGE *" id="con_message" name="con_message" required></textarea>
+    </div>
+    <input type="hidden" name="form_name" value="Contact Us">
+    <div class="btn-container">
+        <button type="submit" id="btn_sent" class="btn btn-primary btn-arrow">SEND MESSAGE</button>
+        <p id="error_message"> </p>
+    </div>
+</form>
+
+<!-- JavaScript Code -->
+<script>
+document.getElementById("contact_form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const form = event.target;
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+            Accept: "application/json",
+        },
+    })
+        .then(response => response.json().then(data => ({ status: response.status, body: data })))
+        .then(({ status, body }) => {
+            if (status === 200) {
+                document.getElementById("error_message").innerText = "Thank you for your message!";
+                form.reset();
+            } else {
+                console.error("Error:", body);
+                document.getElementById("error_message").innerText = "Oops! There was a problem.";
+            }
+        })
+        .catch(error => {
+            console.error("Fetch Error:", error);
+            document.getElementById("error_message").innerText = "Oops! There was a problem connecting to the server.";
+        });
+});
+</script>
+
+
                                     </div>
                                     <div class="col-lg-6 col-xl-5 offset-xl-1">
                                         <div class="info-slot">
