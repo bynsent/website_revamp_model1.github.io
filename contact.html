@@ -131,69 +131,72 @@
                                 <div class="row">
                                     <div class="col-lg-6">
 <!-- Contact Form -->
-<form action="https://formspree.io/f/mvgobqgk" method="post" id="contact_form" class="waituk_contact-form">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="text" placeholder="FIRST NAME *" id="con_fname" name="con_fname" class="form-control" required>
-            </div>
+<form action="https://formspree.io/f/mvgobqgk" id="contactForm" method="post">
+    <fieldset class="clearfix">
+        <div>
+            <label for="first_name">First Name *</label>
+            <input type="text" name="first_name" id="first_name" class="form-control" required>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="text" placeholder="LAST NAME *" id="con_lname" name="con_lname" class="form-control" required>
-            </div>
+        <div>
+            <label for="last_name">Last Name *</label>
+            <input type="text" name="last_name" id="last_name" class="form-control" required>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="tel" placeholder="PHONE NUMBER" id="con_phone" name="con_phone" class="form-control">
-            </div>
+        <div>
+            <label for="phone_number">Phone Number *</label>
+            <input type="tel" name="phone_number" id="phone_number" class="form-control" pattern="[0-9]+" required>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <input type="email" placeholder="EMAIL ADDRESS *" id="con_email" name="con_email" class="form-control" required>
-            </div>
+        <div>
+            <label for="email">Email Address *</label>
+            <input type="email" name="email" id="email" class="form-control" required>
         </div>
-    </div>
-    <div class="form-group">
-        <textarea class="form-control" placeholder="MESSAGE *" id="con_message" name="con_message" required></textarea>
-    </div>
-    <input type="hidden" name="form_name" value="Contact Us">
-    <div class="btn-container">
-        <button type="submit" id="btn_sent" class="btn btn-primary btn-arrow">SEND MESSAGE</button>
-        <p id="error_message"> </p>
-    </div>
+        <div>
+            <label for="message">Message *</label>
+            <textarea name="message" id="message" class="form-control" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn" style="background-color: #1cacd4 ; color: #ffffff; border: none; transition: none; cursor: pointer;" onmouseover="this.style.backgroundColor='#1cacd4'" onmouseout="this.style.backgroundColor='#1cacd4'">
+            Send Message
+        </button>
+        
+    </fieldset>
+    <p id="response_message" class="text-left"></p>
 </form>
 
-<!-- JavaScript Code -->
 <script>
-document.getElementById("contact_form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const form = event.target;
-    fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: {
-            Accept: "application/json",
-        },
-    })
-        .then(response => response.json().then(data => ({ status: response.status, body: data })))
-        .then(({ status, body }) => {
-            if (status === 200) {
-                document.getElementById("error_message").innerText = "Thank you for your message!";
-                form.reset();
-            } else {
-                console.error("Error:", body);
-                document.getElementById("error_message").innerText = "Oops! There was a problem.";
-            }
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const form = event.target;
+        const responseMessage = document.getElementById("response_message");
+
+        // Send form data via Fetch
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: {
+                Accept: "application/json",
+            },
         })
-        .catch(error => {
-            console.error("Fetch Error:", error);
-            document.getElementById("error_message").innerText = "Oops! There was a problem connecting to the server.";
-        });
-});
+            .then(response => {
+                if (response.ok) {
+                    responseMessage.innerText = "Thank you for your message!";
+                    form.reset();
+                } else {
+                    responseMessage.innerText = "Oops! There was a problem submitting your form.";
+                }
+            })
+            .catch(() => {
+                responseMessage.innerText = "Oops! There was a problem submitting your form.";
+            });
+    });
+
+    // Preserve input data if submission fails
+    function preserveData(event) {
+        event.target.classList.add("dirty"); // Adds a class to indicate data has been entered
+    }
+    document.querySelectorAll("#contactForm input, #contactForm textarea").forEach(element => {
+        element.addEventListener("input", preserveData);
+    });
 </script>
+
 
 
                                     </div>
